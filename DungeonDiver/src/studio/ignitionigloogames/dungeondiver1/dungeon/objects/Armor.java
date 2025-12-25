@@ -8,11 +8,11 @@ public class Armor extends GenericNSRSBObject {
 
     // Constructors
     public Armor() {
-        super(false, "Armor", 80);
+	super(false, "Armor", 80);
     }
 
     @Override
     public void moveOntoHook() {
-        DungeonDiver.getHoldingBag().getArmor().showShop();
+	DungeonDiver.getHoldingBag().getArmor().showShop();
     }
 }

@@ -10,13 +10,13 @@ public class DarkGem extends GenericNSRSBObject {
 
     // Constructors
     public DarkGem() {
-        super(false, "DarkGem", 80);
+	super(false, "DarkGem", 80);
     }
 
     @Override
     public void moveOntoHook() {
-        final DungeonGUI gui = DungeonDiver.getHoldingBag().getDungeonGUI();
-        gui.decay();
-        gui.getBuffManager().setPartlyBlinded(DarkGem.PARTLY_BLINDED_LENGTH);
+	final DungeonGUI gui = DungeonDiver.getHoldingBag().getDungeonGUI();
+	gui.decay();
+	gui.getBuffManager().setPartlyBlinded(DarkGem.PARTLY_BLINDED_LENGTH);
     }
 }

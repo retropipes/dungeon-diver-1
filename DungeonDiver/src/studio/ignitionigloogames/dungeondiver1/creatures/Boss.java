@@ -22,64 +22,64 @@ public class Boss extends Creature {
 
     // Constructors
     public Boss() {
-        super();
-        this.level = Boss.FIGHT_LEVEL + Boss.BONUS_LEVEL;
-        this.maximumHP = Boss.getInitialMaximumHP();
-        this.currentHP = this.maximumHP;
-        this.maximumMP = Boss.getInitialMaximumMP();
-        this.currentMP = this.maximumMP;
-        this.attack = Boss.getInitialAttack();
-        this.defense = Boss.getInitialDefense();
-        this.gold = 0;
-        this.experience = 0;
-        this.spellsKnown = new BossSpellBook();
-        this.ai = new BossAIRoutine();
+	super();
+	this.level = Boss.FIGHT_LEVEL + Boss.BONUS_LEVEL;
+	this.maximumHP = Boss.getInitialMaximumHP();
+	this.currentHP = this.maximumHP;
+	this.maximumMP = Boss.getInitialMaximumMP();
+	this.currentMP = this.maximumMP;
+	this.attack = Boss.getInitialAttack();
+	this.defense = Boss.getInitialDefense();
+	this.gold = 0;
+	this.experience = 0;
+	this.spellsKnown = new BossSpellBook();
+	this.ai = new BossAIRoutine();
     }
 
     @Override
     public int getAttack() {
-        return this.attack;
+	return this.attack;
     }
 
     @Override
     public int getDefense() {
-        return this.defense;
+	return this.defense;
     }
 
     private static int getInitialAttack() {
-        final Player player = DungeonDiver.getHoldingBag().getPlayer();
-        return (int) (player.getAttack() * Boss.ATTACK_MULTIPLIER);
+	final Player player = DungeonDiver.getHoldingBag().getPlayer();
+	return (int) (player.getAttack() * Boss.ATTACK_MULTIPLIER);
     }
 
     private static int getInitialDefense() {
-        final Player player = DungeonDiver.getHoldingBag().getPlayer();
-        return (int) (player.getDefense() * Boss.DEFENSE_MULTIPLIER);
+	final Player player = DungeonDiver.getHoldingBag().getPlayer();
+	return (int) (player.getDefense() * Boss.DEFENSE_MULTIPLIER);
     }
 
     // Helper Methods
     private static int getInitialMaximumHP() {
-        final Player player = DungeonDiver.getHoldingBag().getPlayer();
-        return (int) (player.getMaximumHP() * Boss.HP_MULTIPLIER);
+	final Player player = DungeonDiver.getHoldingBag().getPlayer();
+	return (int) (player.getMaximumHP() * Boss.HP_MULTIPLIER);
     }
 
     private static int getInitialMaximumMP() {
-        final Player player = DungeonDiver.getHoldingBag().getPlayer();
-        return (int) (player.getMaximumMP() * Boss.MP_MULTIPLIER);
+	final Player player = DungeonDiver.getHoldingBag().getPlayer();
+	return (int) (player.getMaximumMP() * Boss.MP_MULTIPLIER);
     }
 
     // Accessors
     @Override
     public String getFightingWhatString() {
-        return "You're fighting The Boss";
+	return "You're fighting The Boss";
     }
 
     @Override
     protected BufferedImageIcon getInitialImage() {
-        return GraphicsManager.getBossImage();
+	return GraphicsManager.getBossImage();
     }
 
     @Override
     public String getName() {
-        return "The Boss";
+	return "The Boss";
     }
 }

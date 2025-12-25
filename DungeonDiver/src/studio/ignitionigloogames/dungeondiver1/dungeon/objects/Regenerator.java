@@ -8,11 +8,11 @@ public class Regenerator extends GenericNSRSBObject {
 
     // Constructors
     public Regenerator() {
-        super(false, "Regenerator", 20);
+	super(false, "Regenerator", 20);
     }
 
     @Override
     public void moveOntoHook() {
-        DungeonDiver.getHoldingBag().getRegenerator().showShop();
+	DungeonDiver.getHoldingBag().getRegenerator().showShop();
     }
 }

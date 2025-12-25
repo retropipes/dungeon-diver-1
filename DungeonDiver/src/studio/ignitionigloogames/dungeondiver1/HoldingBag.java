@@ -24,121 +24,121 @@ public class HoldingBag implements ShopTypes {
 
     // Constructors
     public HoldingBag() {
-        this.battle = new Battle();
-        this.bossBattle = new BossBattle();
-        this.weapons = new Shop(ShopTypes.WEAPONS);
-        this.armor = new Shop(ShopTypes.ARMOR);
-        this.healer = new Shop(ShopTypes.HEALER);
-        this.bank = new Shop(ShopTypes.BANK);
-        this.regenerator = new Shop(ShopTypes.REGENERATOR);
-        this.state = new SavedState();
-        this.dungeonGUI = new DungeonGUI();
-        this.help = new Help();
-        this.gui = new GUIManager();
-        this.game = new GameManager();
-        this.prefs = new Preferences();
-        this.bossFlag = false;
+	this.battle = new Battle();
+	this.bossBattle = new BossBattle();
+	this.weapons = new Shop(ShopTypes.WEAPONS);
+	this.armor = new Shop(ShopTypes.ARMOR);
+	this.healer = new Shop(ShopTypes.HEALER);
+	this.bank = new Shop(ShopTypes.BANK);
+	this.regenerator = new Shop(ShopTypes.REGENERATOR);
+	this.state = new SavedState();
+	this.dungeonGUI = new DungeonGUI();
+	this.help = new Help();
+	this.gui = new GUIManager();
+	this.game = new GameManager();
+	this.prefs = new Preferences();
+	this.bossFlag = false;
     }
 
     // Methods
     public void showGUI() {
-        this.dungeonGUI.hideDungeon();
-        this.gui.showGUI();
+	this.dungeonGUI.hideDungeon();
+	this.gui.showGUI();
     }
 
     public GUIManager getGUIManager() {
-        return this.gui;
+	return this.gui;
     }
 
     public GameManager getGameManager() {
-        return this.game;
+	return this.game;
     }
 
     public DungeonGUI getDungeonGUI() {
-        return this.dungeonGUI;
+	return this.dungeonGUI;
     }
 
     public Battle getBattle() {
-        if (this.player.getLevel() == Boss.FIGHT_LEVEL) {
-            if (!this.bossFlag) {
-                this.battle.battleDone();
-                this.bossFlag = true;
-            }
-            return this.bossBattle;
-        } else {
-            this.bossFlag = false;
-            return this.battle;
-        }
+	if (this.player.getLevel() == Boss.FIGHT_LEVEL) {
+	    if (!this.bossFlag) {
+		this.battle.battleDone();
+		this.bossFlag = true;
+	    }
+	    return this.bossBattle;
+	} else {
+	    this.bossFlag = false;
+	    return this.battle;
+	}
     }
 
     public Player getPlayer() {
-        return this.player;
+	return this.player;
     }
 
     public void setPlayer(final Player newPlayer) {
-        this.player = newPlayer;
+	this.player = newPlayer;
     }
 
     public Shop getArmor() {
-        return this.armor;
+	return this.armor;
     }
 
     public Shop getBank() {
-        return this.bank;
+	return this.bank;
     }
 
     public Shop getHealer() {
-        return this.healer;
+	return this.healer;
     }
 
     public Shop getRegenerator() {
-        return this.regenerator;
+	return this.regenerator;
     }
 
     public Shop getWeapons() {
-        return this.weapons;
+	return this.weapons;
     }
 
     public Preferences getPrefs() {
-        return this.prefs;
+	return this.prefs;
     }
 
     public boolean loadState() {
-        this.hideGUI();
-        final boolean result = this.state.load();
-        this.showGUI();
-        return result;
+	this.hideGUI();
+	final boolean result = this.state.load();
+	this.showGUI();
+	return result;
     }
 
     public void saveState() {
-        this.hideGUI();
-        this.state.save();
-        this.showGUI();
+	this.hideGUI();
+	this.state.save();
+	this.showGUI();
     }
 
     public void newDungeon() {
-        this.hideGUI();
-        this.dungeonGUI.newDungeon();
+	this.hideGUI();
+	this.dungeonGUI.newDungeon();
     }
 
     public void showHelp() {
-        this.help.showHelp();
+	this.help.showHelp();
     }
 
     public void quit() {
-        this.hideGUI();
-        System.exit(0);
+	this.hideGUI();
+	System.exit(0);
     }
 
     public void exploreDungeon() {
-        this.hideGUI();
-        if (!this.dungeonGUI.doesDungeonExist()) {
-            this.dungeonGUI.newDungeon();
-        }
-        this.dungeonGUI.exploreDungeon();
+	this.hideGUI();
+	if (!this.dungeonGUI.doesDungeonExist()) {
+	    this.dungeonGUI.newDungeon();
+	}
+	this.dungeonGUI.exploreDungeon();
     }
 
     private void hideGUI() {
-        this.gui.hideGUI();
+	this.gui.hideGUI();
     }
 }

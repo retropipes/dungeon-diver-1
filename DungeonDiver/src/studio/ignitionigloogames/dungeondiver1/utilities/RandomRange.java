@@ -10,14 +10,13 @@ public class RandomRange {
 
     // Constructor
     public RandomRange(final int min, final int max) {
-        this.generator = new Random();
-        this.minRange = min;
-        this.maxRange = max;
+	this.generator = new Random();
+	this.minRange = min;
+	this.maxRange = max;
     }
 
     // Method
     public int generate() {
-        return Math.abs(this.generator.nextInt())
-                % (this.maxRange - this.minRange + 1) + this.minRange;
+	return Math.abs(this.generator.nextInt()) % (this.maxRange - this.minRange + 1) + this.minRange;
     }
 }

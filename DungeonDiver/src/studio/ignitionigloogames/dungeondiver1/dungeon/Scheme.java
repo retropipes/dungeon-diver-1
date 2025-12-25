@@ -10,21 +10,20 @@ public class Scheme {
 
     // Constructor
     public Scheme(final double red, final double green, final double blue) {
-        this.transformRed = red;
-        this.transformGreen = green;
-        this.transformBlue = blue;
+	this.transformRed = red;
+	this.transformGreen = green;
+	this.transformBlue = blue;
     }
 
     // Methods
     public Color applyTransform(final Color source) {
-        final int red = source.getRed();
-        final int green = source.getGreen();
-        final int blue = source.getBlue();
-        final int transformedRed = (int) (red * this.transformRed);
-        final int transformedGreen = (int) (green * this.transformGreen);
-        final int transformedBlue = (int) (blue * this.transformBlue);
-        final Color transformed = new Color(transformedRed, transformedGreen,
-                transformedBlue);
-        return transformed;
+	final int red = source.getRed();
+	final int green = source.getGreen();
+	final int blue = source.getBlue();
+	final int transformedRed = (int) (red * this.transformRed);
+	final int transformedGreen = (int) (green * this.transformGreen);
+	final int transformedBlue = (int) (blue * this.transformBlue);
+	final Color transformed = new Color(transformedRed, transformedGreen, transformedBlue);
+	return transformed;
     }
 }

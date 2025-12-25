@@ -6,15 +6,15 @@ public class SavedStateIdentifier {
 
     // Private constructor
     private SavedStateIdentifier() {
-        // Do nothing
+	// Do nothing
     }
 
     // Methods
     public static String getIdentifier() {
-        return SavedStateIdentifier.IDENTIFIER;
+	return SavedStateIdentifier.IDENTIFIER;
     }
 
     public static String getIdentifierWithPeriod() {
-        return "." + SavedStateIdentifier.IDENTIFIER;
+	return "." + SavedStateIdentifier.IDENTIFIER;
     }
 }

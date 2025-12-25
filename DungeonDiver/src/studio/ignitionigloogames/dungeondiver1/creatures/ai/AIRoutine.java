@@ -19,25 +19,25 @@ public abstract class AIRoutine {
     public abstract int getNextAction(Creature c);
 
     public final void performAction(final int action) {
-        final Battle b = DungeonDiver.getHoldingBag().getBattle();
-        switch (action) {
-            case ACTION_ATTACK:
-                this.lastActionResult = b.doEnemyAttack();
-                break;
-            case ACTION_FLEE:
-                final RandomRange r = new RandomRange(1, 100);
-                final int chance = r.generate();
-                if (chance <= AIRoutine.ENEMY_FLEE_CHANCE) {
-                    this.lastActionResult = b.doEnemyFlee();
-                } else {
-                    this.lastActionResult = b.doEnemyFleeFailure();
-                }
-                break;
-            case ACTION_CAST_SPELL:
-                this.lastActionResult = b.doEnemyCastSpell(this.spell);
-                break;
-            default:
-                break;
-        }
+	final Battle b = DungeonDiver.getHoldingBag().getBattle();
+	switch (action) {
+	case ACTION_ATTACK:
+	    this.lastActionResult = b.doEnemyAttack();
+	    break;
+	case ACTION_FLEE:
+	    final RandomRange r = new RandomRange(1, 100);
+	    final int chance = r.generate();
+	    if (chance <= AIRoutine.ENEMY_FLEE_CHANCE) {
+		this.lastActionResult = b.doEnemyFlee();
+	    } else {
+		this.lastActionResult = b.doEnemyFleeFailure();
+	    }
+	    break;
+	case ACTION_CAST_SPELL:
+	    this.lastActionResult = b.doEnemyCastSpell(this.spell);
+	    break;
+	default:
+	    break;
+	}
     }
 }

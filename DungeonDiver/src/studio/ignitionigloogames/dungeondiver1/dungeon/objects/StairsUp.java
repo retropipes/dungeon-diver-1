@@ -10,14 +10,14 @@ public class StairsUp extends GenericNSRSBObject {
 
     // Constructors
     public StairsUp() {
-        super(false, "StairsUp", 100);
+	super(false, "StairsUp", 100);
     }
 
     @Override
     public void moveOntoHook() {
-        final HoldingBag mm = DungeonDiver.getHoldingBag();
-        final DungeonGUI gui = mm.getDungeonGUI();
-        gui.newDungeonAndScheme();
-        mm.getPlayer().decrementDungeonLevel();
+	final HoldingBag mm = DungeonDiver.getHoldingBag();
+	final DungeonGUI gui = mm.getDungeonGUI();
+	gui.newDungeonAndScheme();
+	mm.getPlayer().decrementDungeonLevel();
     }
 }

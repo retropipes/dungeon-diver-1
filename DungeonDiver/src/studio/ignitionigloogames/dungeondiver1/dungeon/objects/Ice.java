@@ -12,43 +12,40 @@ public class Ice extends GenericNotSurroundedObject {
 
     // Constructors
     public Ice() {
-        super(false, "Ice");
+	super(false, "Ice");
     }
 
     @Override
     public int getMaximumRequiredQuantity(final NDimensionalMap map) {
-        return 0;
+	return 0;
     }
 
     @Override
     public int getMinimumRequiredQuantity(final NDimensionalMap map) {
-        return 0;
+	return 0;
     }
 
     @Override
     public boolean isRequired() {
-        return false;
+	return false;
     }
 
     @Override
     public void moveOntoHook() {
-        final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
-                .getPreferenceValue(Preferences.ICE_ENABLED);
-        if (enabled) {
-            DungeonDiver.getHoldingBag().getDungeonGUI().updatePositionAgain();
-        }
+	final boolean enabled = DungeonDiver.getHoldingBag().getPrefs().getPreferenceValue(Preferences.ICE_ENABLED);
+	if (enabled) {
+	    DungeonDiver.getHoldingBag().getDungeonGUI().updatePositionAgain();
+	}
     }
 
     @Override
     public BufferedImageIcon getGameAppearance() {
-        final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
-                .getPreferenceValue(Preferences.ICE_ENABLED);
-        if (enabled) {
-            return super.getGameAppearance();
-        } else {
-            DungeonDiver.getHoldingBag().getDungeonGUI().getObjectList();
-            return DungeonObjectList.getSpecificObject("Tile")
-                    .getGameAppearance();
-        }
+	final boolean enabled = DungeonDiver.getHoldingBag().getPrefs().getPreferenceValue(Preferences.ICE_ENABLED);
+	if (enabled) {
+	    return super.getGameAppearance();
+	} else {
+	    DungeonDiver.getHoldingBag().getDungeonGUI().getObjectList();
+	    return DungeonObjectList.getSpecificObject("Tile").getGameAppearance();
+	}
     }
 }

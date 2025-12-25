@@ -12,24 +12,22 @@ public abstract class DungeonObject extends MapObject {
     private boolean appearanceValid;
 
     // Constructors
-    public DungeonObject(final boolean solid, final String name,
-            final MapObject prereq) {
-        super(1, solid, name, prereq);
-        this.setGameAppearance(GraphicsManager.getDungeonImage(name));
-        this.appearanceValid = true;
+    public DungeonObject(final boolean solid, final String name, final MapObject prereq) {
+	super(1, solid, name, prereq);
+	this.setGameAppearance(GraphicsManager.getDungeonImage(name));
+	this.appearanceValid = true;
     }
 
     // Methods
     public void updateAppearance() {
-        if (!this.appearanceValid) {
-            this.setGameAppearance(
-                    GraphicsManager.getDungeonImage(this.getName()));
-            this.appearanceValid = true;
-        }
+	if (!this.appearanceValid) {
+	    this.setGameAppearance(GraphicsManager.getDungeonImage(this.getName()));
+	    this.appearanceValid = true;
+	}
     }
 
     public void invalidateAppearance() {
-        this.appearanceValid = false;
+	this.appearanceValid = false;
     }
 
     public abstract void moveOntoHook();
@@ -40,6 +38,6 @@ public abstract class DungeonObject extends MapObject {
      * @param yLoc
      */
     public void playerMoveHook(final int xLoc, final int yLoc) {
-        // Do nothing
+	// Do nothing
     }
 }

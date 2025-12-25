@@ -14,33 +14,28 @@ public class ClockwiseRotationTrap extends GenericNSRSBObject {
 
     // Constructors
     public ClockwiseRotationTrap() {
-        super(false, "ClockwiseRotationTrap", 80);
+	super(false, "ClockwiseRotationTrap", 80);
     }
 
     @Override
     public void moveOntoHook() {
-        final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
-                .getPreferenceValue(
-                        Preferences.CLOCKWISE_ROTATION_TRAP_ENABLED);
-        if (enabled) {
-            final DungeonGUI gui = DungeonDiver.getHoldingBag().getDungeonGUI();
-            gui.getBuffManager().setRotated(
-                    ClockwiseRotationTrap.ROTATION_LENGTH,
-                    Rotated.ROTATED_STATE_CLOCKWISE);
-        }
+	final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
+		.getPreferenceValue(Preferences.CLOCKWISE_ROTATION_TRAP_ENABLED);
+	if (enabled) {
+	    final DungeonGUI gui = DungeonDiver.getHoldingBag().getDungeonGUI();
+	    gui.getBuffManager().setRotated(ClockwiseRotationTrap.ROTATION_LENGTH, Rotated.ROTATED_STATE_CLOCKWISE);
+	}
     }
 
     @Override
     public BufferedImageIcon getGameAppearance() {
-        final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
-                .getPreferenceValue(
-                        Preferences.CLOCKWISE_ROTATION_TRAP_ENABLED);
-        if (enabled) {
-            return super.getGameAppearance();
-        } else {
-            DungeonDiver.getHoldingBag().getDungeonGUI().getObjectList();
-            return DungeonObjectList.getSpecificObject("Tile")
-                    .getGameAppearance();
-        }
+	final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
+		.getPreferenceValue(Preferences.CLOCKWISE_ROTATION_TRAP_ENABLED);
+	if (enabled) {
+	    return super.getGameAppearance();
+	} else {
+	    DungeonDiver.getHoldingBag().getDungeonGUI().getObjectList();
+	    return DungeonObjectList.getSpecificObject("Tile").getGameAppearance();
+	}
     }
 }

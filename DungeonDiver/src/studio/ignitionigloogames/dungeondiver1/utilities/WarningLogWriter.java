@@ -31,95 +31,93 @@ class WarningLogWriter {
 
     // Constructors
     WarningLogWriter(final Throwable problem, final String programName) {
-        this.t = problem;
-        this.c = Calendar.getInstance();
-        this.p = programName;
+	this.t = problem;
+	this.c = Calendar.getInstance();
+	this.p = programName;
     }
 
     // Methods
     void writeLogInfo() {
-        try {
-            // Make sure the needed directories exist first
-            final File df = this.getLogFile();
-            final File parent = new File(df.getParent());
-            if (!parent.exists()) {
-                final boolean res = parent.mkdirs();
-                if (!res) {
-                    throw new FileNotFoundException("Cannot make directories!"); //$NON-NLS-1$
-                }
-            }
-            // Print to the file
-            try (PrintStream s = new PrintStream(
-                    new BufferedOutputStream(new FileOutputStream(df)))) {
-                this.t.printStackTrace(s);
-                s.close();
-            }
-        } catch (final FileNotFoundException fnf) {
-            // Print to standard error, if something went wrong
-            this.t.printStackTrace(System.err);
-        }
+	try {
+	    // Make sure the needed directories exist first
+	    final File df = this.getLogFile();
+	    final File parent = new File(df.getParent());
+	    if (!parent.exists()) {
+		final boolean res = parent.mkdirs();
+		if (!res) {
+		    throw new FileNotFoundException("Cannot make directories!"); //$NON-NLS-1$
+		}
+	    }
+	    // Print to the file
+	    try (PrintStream s = new PrintStream(new BufferedOutputStream(new FileOutputStream(df)))) {
+		this.t.printStackTrace(s);
+		s.close();
+	    }
+	} catch (final FileNotFoundException fnf) {
+	    // Print to standard error, if something went wrong
+	    this.t.printStackTrace(System.err);
+	}
     }
 
     private static String getLogDirPrefix() {
-        final String osName = System.getProperty("os.name"); //$NON-NLS-1$
-        if (osName.indexOf("Mac OS X") != -1) { //$NON-NLS-1$
-            // Mac OS X
-            return System.getenv(WarningLogWriter.MAC_PREFIX);
-        } else if (osName.indexOf("Windows") != -1) { //$NON-NLS-1$
-            // Windows
-            return System.getenv(WarningLogWriter.WIN_PREFIX);
-        } else {
-            // Other - assume UNIX-like
-            return System.getenv(WarningLogWriter.UNIX_PREFIX);
-        }
+	final String osName = System.getProperty("os.name"); //$NON-NLS-1$
+	if (osName.indexOf("Mac OS X") != -1) { //$NON-NLS-1$
+	    // Mac OS X
+	    return System.getenv(WarningLogWriter.MAC_PREFIX);
+	} else if (osName.indexOf("Windows") != -1) { //$NON-NLS-1$
+	    // Windows
+	    return System.getenv(WarningLogWriter.WIN_PREFIX);
+	} else {
+	    // Other - assume UNIX-like
+	    return System.getenv(WarningLogWriter.UNIX_PREFIX);
+	}
     }
 
     private static String getLogDirectory() {
-        final String osName = System.getProperty("os.name"); //$NON-NLS-1$
-        if (osName.indexOf("Mac OS X") != -1) { //$NON-NLS-1$
-            // Mac OS X
-            return WarningLogWriter.MAC_DIR;
-        } else if (osName.indexOf("Windows") != -1) { //$NON-NLS-1$
-            // Windows
-            return WarningLogWriter.WIN_DIR;
-        } else {
-            // Other - assume UNIX-like
-            return WarningLogWriter.UNIX_DIR;
-        }
+	final String osName = System.getProperty("os.name"); //$NON-NLS-1$
+	if (osName.indexOf("Mac OS X") != -1) { //$NON-NLS-1$
+	    // Mac OS X
+	    return WarningLogWriter.MAC_DIR;
+	} else if (osName.indexOf("Windows") != -1) { //$NON-NLS-1$
+	    // Windows
+	    return WarningLogWriter.WIN_DIR;
+	} else {
+	    // Other - assume UNIX-like
+	    return WarningLogWriter.UNIX_DIR;
+	}
     }
 
     private static String getLogFileExtension() {
-        final String osName = System.getProperty("os.name"); //$NON-NLS-1$
-        if (osName.indexOf("Mac OS X") != -1) { //$NON-NLS-1$
-            // Mac OS X
-            return WarningLogWriter.MAC_EXT;
-        } else if (osName.indexOf("Windows") != -1) { //$NON-NLS-1$
-            // Windows
-            return WarningLogWriter.WIN_EXT;
-        } else {
-            // Other - assume UNIX-like
-            return WarningLogWriter.UNIX_EXT;
-        }
+	final String osName = System.getProperty("os.name"); //$NON-NLS-1$
+	if (osName.indexOf("Mac OS X") != -1) { //$NON-NLS-1$
+	    // Mac OS X
+	    return WarningLogWriter.MAC_EXT;
+	} else if (osName.indexOf("Windows") != -1) { //$NON-NLS-1$
+	    // Windows
+	    return WarningLogWriter.WIN_EXT;
+	} else {
+	    // Other - assume UNIX-like
+	    return WarningLogWriter.UNIX_EXT;
+	}
     }
 
     private String getStampSuffix() {
-        final Date time = this.c.getTime();
-        final SimpleDateFormat sdf = new SimpleDateFormat(
-                "'_'yyyyMMdd'_'HHmmssSSS"); //$NON-NLS-1$
-        return sdf.format(time);
+	final Date time = this.c.getTime();
+	final SimpleDateFormat sdf = new SimpleDateFormat("'_'yyyyMMdd'_'HHmmssSSS"); //$NON-NLS-1$
+	return sdf.format(time);
     }
 
     private String getLogFileName() {
-        return this.p;
+	return this.p;
     }
 
     private File getLogFile() {
-        final StringBuilder b = new StringBuilder();
-        b.append(WarningLogWriter.getLogDirPrefix());
-        b.append(WarningLogWriter.getLogDirectory());
-        b.append(this.getLogFileName());
-        b.append(this.getStampSuffix());
-        b.append(WarningLogWriter.getLogFileExtension());
-        return new File(b.toString());
+	final StringBuilder b = new StringBuilder();
+	b.append(WarningLogWriter.getLogDirPrefix());
+	b.append(WarningLogWriter.getLogDirectory());
+	b.append(this.getLogFileName());
+	b.append(this.getStampSuffix());
+	b.append(WarningLogWriter.getLogFileExtension());
+	return new File(b.toString());
     }
 }

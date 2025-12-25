@@ -9,32 +9,31 @@ public class Darkness extends DungeonObject {
 
     // Constructors
     public Darkness() {
-        super(false, "Darkness", null);
+	super(false, "Darkness", null);
     }
 
     @Override
-    public boolean shouldGenerateObject(final NDimensionalLocation loc,
-            final NDimensionalMap map) {
-        return false;
+    public boolean shouldGenerateObject(final NDimensionalLocation loc, final NDimensionalMap map) {
+	return false;
     }
 
     @Override
     public int getMinimumRequiredQuantity(final NDimensionalMap map) {
-        return 0;
+	return 0;
     }
 
     @Override
     public int getMaximumRequiredQuantity(final NDimensionalMap map) {
-        return 0;
+	return 0;
     }
 
     @Override
     public boolean isRequired() {
-        return false;
+	return false;
     }
 
     @Override
     public void moveOntoHook() {
-        // Do nothing
+	// Do nothing
     }
 }

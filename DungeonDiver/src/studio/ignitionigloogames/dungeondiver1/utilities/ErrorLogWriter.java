@@ -31,95 +31,93 @@ class ErrorLogWriter {
 
     // Constructors
     ErrorLogWriter(final Throwable problem, final String programName) {
-        this.t = problem;
-        this.c = Calendar.getInstance();
-        this.p = programName;
+	this.t = problem;
+	this.c = Calendar.getInstance();
+	this.p = programName;
     }
 
     // Methods
     void writeErrorInfo() {
-        try {
-            // Make sure the needed directories exist first
-            final File df = this.getErrorFile();
-            final File parent = new File(df.getParent());
-            if (!parent.exists()) {
-                final boolean res = parent.mkdirs();
-                if (!res) {
-                    throw new FileNotFoundException("Cannot make directories!"); //$NON-NLS-1$
-                }
-            }
-            // Print to the file
-            try (PrintStream s = new PrintStream(
-                    new BufferedOutputStream(new FileOutputStream(df)))) {
-                this.t.printStackTrace(s);
-                s.close();
-            }
-        } catch (final FileNotFoundException fnf) {
-            // Print to standard error, if something went wrong
-            this.t.printStackTrace(System.err);
-        }
+	try {
+	    // Make sure the needed directories exist first
+	    final File df = this.getErrorFile();
+	    final File parent = new File(df.getParent());
+	    if (!parent.exists()) {
+		final boolean res = parent.mkdirs();
+		if (!res) {
+		    throw new FileNotFoundException("Cannot make directories!"); //$NON-NLS-1$
+		}
+	    }
+	    // Print to the file
+	    try (PrintStream s = new PrintStream(new BufferedOutputStream(new FileOutputStream(df)))) {
+		this.t.printStackTrace(s);
+		s.close();
+	    }
+	} catch (final FileNotFoundException fnf) {
+	    // Print to standard error, if something went wrong
+	    this.t.printStackTrace(System.err);
+	}
     }
 
     private static String getErrorDirPrefix() {
-        final String osName = System.getProperty("os.name"); //$NON-NLS-1$
-        if (osName.indexOf("Mac OS X") != -1) { //$NON-NLS-1$
-            // Mac OS X
-            return System.getenv(ErrorLogWriter.MAC_PREFIX);
-        } else if (osName.indexOf("Windows") != -1) { //$NON-NLS-1$
-            // Windows
-            return System.getenv(ErrorLogWriter.WIN_PREFIX);
-        } else {
-            // Other - assume UNIX-like
-            return System.getenv(ErrorLogWriter.UNIX_PREFIX);
-        }
+	final String osName = System.getProperty("os.name"); //$NON-NLS-1$
+	if (osName.indexOf("Mac OS X") != -1) { //$NON-NLS-1$
+	    // Mac OS X
+	    return System.getenv(ErrorLogWriter.MAC_PREFIX);
+	} else if (osName.indexOf("Windows") != -1) { //$NON-NLS-1$
+	    // Windows
+	    return System.getenv(ErrorLogWriter.WIN_PREFIX);
+	} else {
+	    // Other - assume UNIX-like
+	    return System.getenv(ErrorLogWriter.UNIX_PREFIX);
+	}
     }
 
     private static String getErrorDirectory() {
-        final String osName = System.getProperty("os.name"); //$NON-NLS-1$
-        if (osName.indexOf("Mac OS X") != -1) { //$NON-NLS-1$
-            // Mac OS X
-            return ErrorLogWriter.MAC_DIR;
-        } else if (osName.indexOf("Windows") != -1) { //$NON-NLS-1$
-            // Windows
-            return ErrorLogWriter.WIN_DIR;
-        } else {
-            // Other - assume UNIX-like
-            return ErrorLogWriter.UNIX_DIR;
-        }
+	final String osName = System.getProperty("os.name"); //$NON-NLS-1$
+	if (osName.indexOf("Mac OS X") != -1) { //$NON-NLS-1$
+	    // Mac OS X
+	    return ErrorLogWriter.MAC_DIR;
+	} else if (osName.indexOf("Windows") != -1) { //$NON-NLS-1$
+	    // Windows
+	    return ErrorLogWriter.WIN_DIR;
+	} else {
+	    // Other - assume UNIX-like
+	    return ErrorLogWriter.UNIX_DIR;
+	}
     }
 
     private static String getErrorFileExtension() {
-        final String osName = System.getProperty("os.name"); //$NON-NLS-1$
-        if (osName.indexOf("Mac OS X") != -1) { //$NON-NLS-1$
-            // Mac OS X
-            return ErrorLogWriter.MAC_EXT;
-        } else if (osName.indexOf("Windows") != -1) { //$NON-NLS-1$
-            // Windows
-            return ErrorLogWriter.WIN_EXT;
-        } else {
-            // Other - assume UNIX-like
-            return ErrorLogWriter.UNIX_EXT;
-        }
+	final String osName = System.getProperty("os.name"); //$NON-NLS-1$
+	if (osName.indexOf("Mac OS X") != -1) { //$NON-NLS-1$
+	    // Mac OS X
+	    return ErrorLogWriter.MAC_EXT;
+	} else if (osName.indexOf("Windows") != -1) { //$NON-NLS-1$
+	    // Windows
+	    return ErrorLogWriter.WIN_EXT;
+	} else {
+	    // Other - assume UNIX-like
+	    return ErrorLogWriter.UNIX_EXT;
+	}
     }
 
     private String getStampSuffix() {
-        final Date time = this.c.getTime();
-        final SimpleDateFormat sdf = new SimpleDateFormat(
-                "'_'yyyyMMdd'_'HHmmssSSS"); //$NON-NLS-1$
-        return sdf.format(time);
+	final Date time = this.c.getTime();
+	final SimpleDateFormat sdf = new SimpleDateFormat("'_'yyyyMMdd'_'HHmmssSSS"); //$NON-NLS-1$
+	return sdf.format(time);
     }
 
     private String getErrorFileName() {
-        return this.p;
+	return this.p;
     }
 
     private File getErrorFile() {
-        final StringBuilder b = new StringBuilder();
-        b.append(ErrorLogWriter.getErrorDirPrefix());
-        b.append(ErrorLogWriter.getErrorDirectory());
-        b.append(this.getErrorFileName());
-        b.append(this.getStampSuffix());
-        b.append(ErrorLogWriter.getErrorFileExtension());
-        return new File(b.toString());
+	final StringBuilder b = new StringBuilder();
+	b.append(ErrorLogWriter.getErrorDirPrefix());
+	b.append(ErrorLogWriter.getErrorDirectory());
+	b.append(this.getErrorFileName());
+	b.append(this.getStampSuffix());
+	b.append(ErrorLogWriter.getErrorFileExtension());
+	return new File(b.toString());
     }
 }

@@ -6,11 +6,11 @@ public class Player extends GenericRONSObject {
 
     // Constructors
     public Player() {
-        super(false, "Player");
+	super(false, "Player");
     }
 
     @Override
     public void moveOntoHook() {
-        // Do nothing
+	// Do nothing
     }
 }

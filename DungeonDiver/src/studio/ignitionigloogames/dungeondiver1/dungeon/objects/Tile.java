@@ -8,26 +8,26 @@ public class Tile extends GenericNotSurroundedObject {
 
     // Constructors
     public Tile() {
-        super(false, "Tile");
+	super(false, "Tile");
     }
 
     @Override
     public int getMaximumRequiredQuantity(final NDimensionalMap map) {
-        return 0;
+	return 0;
     }
 
     @Override
     public int getMinimumRequiredQuantity(final NDimensionalMap map) {
-        return 0;
+	return 0;
     }
 
     @Override
     public boolean isRequired() {
-        return false;
+	return false;
     }
 
     @Override
     public void moveOntoHook() {
-        // Do nothing
+	// Do nothing
     }
 }

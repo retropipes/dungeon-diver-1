@@ -8,11 +8,11 @@ public class Healer extends GenericNSRSBObject {
 
     // Constructors
     public Healer() {
-        super(false, "Healer", 20);
+	super(false, "Healer", 20);
     }
 
     @Override
     public void moveOntoHook() {
-        DungeonDiver.getHoldingBag().getHealer().showShop();
+	DungeonDiver.getHoldingBag().getHealer().showShop();
     }
 }

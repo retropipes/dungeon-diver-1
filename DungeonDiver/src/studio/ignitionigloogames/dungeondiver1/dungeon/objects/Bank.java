@@ -8,11 +8,11 @@ public class Bank extends GenericNSRSBObject {
 
     // Constructors
     public Bank() {
-        super(false, "Bank", 20);
+	super(false, "Bank", 20);
     }
 
     @Override
     public void moveOntoHook() {
-        DungeonDiver.getHoldingBag().getBank().showShop();
+	DungeonDiver.getHoldingBag().getBank().showShop();
     }
 }

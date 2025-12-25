@@ -13,29 +13,28 @@ public class ConfusionTrap extends GenericNSRSBObject {
 
     // Constructors
     public ConfusionTrap() {
-        super(false, "ConfusionTrap", 80);
+	super(false, "ConfusionTrap", 80);
     }
 
     @Override
     public void moveOntoHook() {
-        final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
-                .getPreferenceValue(Preferences.CONFUSION_TRAP_ENABLED);
-        if (enabled) {
-            final DungeonGUI gui = DungeonDiver.getHoldingBag().getDungeonGUI();
-            gui.getBuffManager().setConfused(ConfusionTrap.CONFUSION_LENGTH);
-        }
+	final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
+		.getPreferenceValue(Preferences.CONFUSION_TRAP_ENABLED);
+	if (enabled) {
+	    final DungeonGUI gui = DungeonDiver.getHoldingBag().getDungeonGUI();
+	    gui.getBuffManager().setConfused(ConfusionTrap.CONFUSION_LENGTH);
+	}
     }
 
     @Override
     public BufferedImageIcon getGameAppearance() {
-        final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
-                .getPreferenceValue(Preferences.CONFUSION_TRAP_ENABLED);
-        if (enabled) {
-            return super.getGameAppearance();
-        } else {
-            DungeonDiver.getHoldingBag().getDungeonGUI().getObjectList();
-            return DungeonObjectList.getSpecificObject("Tile")
-                    .getGameAppearance();
-        }
+	final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
+		.getPreferenceValue(Preferences.CONFUSION_TRAP_ENABLED);
+	if (enabled) {
+	    return super.getGameAppearance();
+	} else {
+	    DungeonDiver.getHoldingBag().getDungeonGUI().getObjectList();
+	    return DungeonObjectList.getSpecificObject("Tile").getGameAppearance();
+	}
     }
 }

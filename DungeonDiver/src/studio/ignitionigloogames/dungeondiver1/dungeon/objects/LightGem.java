@@ -10,13 +10,13 @@ public class LightGem extends GenericNSRSBObject {
 
     // Constructors
     public LightGem() {
-        super(false, "LightGem", 80);
+	super(false, "LightGem", 80);
     }
 
     @Override
     public void moveOntoHook() {
-        final DungeonGUI gui = DungeonDiver.getHoldingBag().getDungeonGUI();
-        gui.decay();
-        gui.getBuffManager().setShining(LightGem.SHINING_LENGTH);
+	final DungeonGUI gui = DungeonDiver.getHoldingBag().getDungeonGUI();
+	gui.decay();
+	gui.getBuffManager().setShining(LightGem.SHINING_LENGTH);
     }
 }

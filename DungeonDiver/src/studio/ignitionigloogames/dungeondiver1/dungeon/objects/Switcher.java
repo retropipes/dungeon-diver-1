@@ -8,11 +8,11 @@ public class Switcher extends GenericRONSObject {
 
     // Constructors
     public Switcher() {
-        super(false, "Switcher");
+	super(false, "Switcher");
     }
 
     @Override
     public void moveOntoHook() {
-        DungeonDiver.getHoldingBag().getDungeonGUI().newScheme();
+	DungeonDiver.getHoldingBag().getDungeonGUI().newScheme();
     }
 }

@@ -9,23 +9,23 @@ public class DungeonDiver {
 
     // Methods
     public static HoldingBag getHoldingBag() {
-        return DungeonDiver.bag;
+	return DungeonDiver.bag;
     }
 
     public static void debug(final Throwable t) {
-        DungeonDiver.debug.handle(t);
+	DungeonDiver.debug.handle(t);
     }
 
     public static void main(final String[] args) {
-        // Install error handler
-        Thread.setDefaultUncaughtExceptionHandler(DungeonDiver.debug);
-        // Enable OS integration
-        Integration.integrate();
-        try {
-            DungeonDiver.bag = new HoldingBag();
-            DungeonDiver.bag.showGUI();
-        } catch (final Throwable t) {
-            DungeonDiver.debug(t);
-        }
+	// Install error handler
+	Thread.setDefaultUncaughtExceptionHandler(DungeonDiver.debug);
+	// Enable OS integration
+	Integration.integrate();
+	try {
+	    DungeonDiver.bag = new HoldingBag();
+	    DungeonDiver.bag.showGUI();
+	} catch (final Throwable t) {
+	    DungeonDiver.debug(t);
+	}
     }
 }

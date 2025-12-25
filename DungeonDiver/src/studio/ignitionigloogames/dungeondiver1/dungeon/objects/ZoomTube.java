@@ -10,13 +10,13 @@ public class ZoomTube extends GenericRONSObject {
 
     // Constructors
     public ZoomTube() {
-        super(false, "ZoomTube");
+	super(false, "ZoomTube");
     }
 
     @Override
     public void moveOntoHook() {
-        final HoldingBag mm = DungeonDiver.getHoldingBag();
-        final DungeonGUI gui = mm.getDungeonGUI();
-        gui.newDungeon();
+	final HoldingBag mm = DungeonDiver.getHoldingBag();
+	final DungeonGUI gui = mm.getDungeonGUI();
+	gui.newDungeon();
     }
 }

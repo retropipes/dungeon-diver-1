@@ -12,17 +12,16 @@ public class Help {
 
     // Constructor
     public Help() {
-        try {
-            this.helpURL = new URI(
-                    "https://ignitionigloogames.studio/games/dungeondiver1/help/").toURL();
-            this.helpLink = this.helpURL.toExternalForm();
-        } catch (final MalformedURLException | URISyntaxException e) {
-            // Ignore exception
-        }
+	try {
+	    this.helpURL = new URI("https://ignitionigloogames.studio/games/dungeondiver1/help/").toURL();
+	    this.helpLink = this.helpURL.toExternalForm();
+	} catch (final MalformedURLException | URISyntaxException e) {
+	    // Ignore exception
+	}
     }
 
     // Method
     public void showHelp() {
-        BrowserLauncher.openURL(this.helpLink);
+	BrowserLauncher.openURL(this.helpLink);
     }
 }

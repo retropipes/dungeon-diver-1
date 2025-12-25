@@ -13,29 +13,28 @@ public class SpinnerTrap extends GenericNSRSBObject {
 
     // Constructors
     public SpinnerTrap() {
-        super(false, "SpinnerTrap", 160);
+	super(false, "SpinnerTrap", 160);
     }
 
     @Override
     public void moveOntoHook() {
-        final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
-                .getPreferenceValue(Preferences.SPINNER_TRAP_ENABLED);
-        if (enabled) {
-            final DungeonGUI gui = DungeonDiver.getHoldingBag().getDungeonGUI();
-            gui.getBuffManager().setDizzy(SpinnerTrap.DIZZY_LENGTH);
-        }
+	final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
+		.getPreferenceValue(Preferences.SPINNER_TRAP_ENABLED);
+	if (enabled) {
+	    final DungeonGUI gui = DungeonDiver.getHoldingBag().getDungeonGUI();
+	    gui.getBuffManager().setDizzy(SpinnerTrap.DIZZY_LENGTH);
+	}
     }
 
     @Override
     public BufferedImageIcon getGameAppearance() {
-        final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
-                .getPreferenceValue(Preferences.SPINNER_TRAP_ENABLED);
-        if (enabled) {
-            return super.getGameAppearance();
-        } else {
-            DungeonDiver.getHoldingBag().getDungeonGUI().getObjectList();
-            return DungeonObjectList.getSpecificObject("Tile")
-                    .getGameAppearance();
-        }
+	final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
+		.getPreferenceValue(Preferences.SPINNER_TRAP_ENABLED);
+	if (enabled) {
+	    return super.getGameAppearance();
+	} else {
+	    DungeonDiver.getHoldingBag().getDungeonGUI().getObjectList();
+	    return DungeonObjectList.getSpecificObject("Tile").getGameAppearance();
+	}
     }
 }
